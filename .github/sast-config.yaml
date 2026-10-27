@@ -5,8 +5,6 @@ output:
 
 sast:
   strict: true
-  checks:
-    vulnerabilities: true
   include:
     - .
   exclude:
