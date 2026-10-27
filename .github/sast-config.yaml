@@ -1,9 +1,12 @@
 language: EN
-strict: true
 output:
   file_path: sast-results.csv
   format: CSV
+
 sast:
+  strict: true
+  checks:
+    vulnerabilities: true
   include:
     - .
   exclude:
