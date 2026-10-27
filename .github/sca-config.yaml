@@ -1,5 +1,5 @@
 language: EN
-strict: true
+strict: false
 output:
   file_path: sca-results.csv
   format: CSV
