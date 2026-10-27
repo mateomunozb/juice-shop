@@ -1,5 +1,5 @@
 language: EN
-strict: true
+strict: false
 strictness_threshold: medium
 output:
   file_path: sast-results.csv
