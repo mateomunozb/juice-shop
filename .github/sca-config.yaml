@@ -1,0 +1,12 @@
+language: EN
+strict: true
+output:
+  file_path: sca-results.csv
+  format: CSV
+sca:
+  include:
+    - .
+  exclude:
+    - node_modules/
+    - frontend/node_modules/
+    - "**/coverage/"
