@@ -1,10 +1,9 @@
 language: EN
+strict: true
 output:
   file_path: sast-results.csv
   format: CSV
-
 sast:
-  strict: true
   include:
     - .
   exclude:
