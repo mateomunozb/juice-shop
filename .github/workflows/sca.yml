@@ -14,34 +14,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: fluidattacks/sca-action@1.2.0
-        id: scan
-        continue-on-error: true
         with:
           scan_config_path: .github/sca-config.yaml
           scanner_mode: full
-
-      - name: Explain scan result
-        if: ${{ always() }}
-        run: |
-          echo "Scanner outcome: ${{ steps.scan.outcome }}"
-          echo "Vulnerabilities found: ${{ steps.scan.outputs.vulnerabilities_found }}"
-          if [ "${{ steps.scan.outcome }}" != "success" ]; then
-            echo "::error::SCA scanner execution failed. Review the scanner log above for configuration or runtime errors."
-          elif [ "${{ steps.scan.outputs.vulnerabilities_found }}" = "true" ]; then
-            echo "::error::SCA scan found vulnerabilities. The explicit failure gate will fail this job."
-          else
-            echo "No vulnerabilities were reported by the SCA scanner."
-          fi
-
-      - name: Fail when vulnerabilities are found
-        if: ${{ always() && (steps.scan.outcome != 'success' || steps.scan.outputs.vulnerabilities_found == 'true') }}
-        run: |
-          if [ "${{ steps.scan.outcome }}" != "success" ]; then
-            echo "::error::SCA scanner failed before producing a successful result."
-          else
-            echo "::error::SCA vulnerabilities were found (vulnerabilities_found=true)."
-          fi
-          exit 1
 
       - name: Upload CSV report
         if: ${{ always() }}
