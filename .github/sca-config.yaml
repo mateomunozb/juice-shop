@@ -1,5 +1,6 @@
 language: EN
 strict: true
+strictness_threshold: medium
 output:
   file_path: sca-results.csv
   format: CSV
