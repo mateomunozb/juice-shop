@@ -1,9 +1,7 @@
 language: EN
-strict: false
-strictness_threshold: medium
 output:
-  file_path: sca-results.csv
-  format: CSV
+  file_path: sast-results.sarif
+  format: SARIF
 sca:
   include:
     - .
