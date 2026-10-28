@@ -1,8 +1,8 @@
 language: EN
 strictness_threshold: critical
 output:
-  file_path: sast-results.csv
-  format: CSV
+   file_path: results.sarif
+   format: SARIF
 sca:
   include:
     - .
