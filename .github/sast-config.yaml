@@ -1,5 +1,5 @@
 language: EN
-strictness_threshold: medium
+strictness_threshold: high
 output:
   file_path: sast-results.csv
   format: CSV
