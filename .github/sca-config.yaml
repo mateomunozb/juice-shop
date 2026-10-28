@@ -1,8 +1,8 @@
 language: EN
-strictness_threshold: critical
+strict: true
 output:
-   file_path: results.sarif
-   format: SARIF
+  file_path: sca-results.csv
+  format: CSV
 sca:
   include:
     - .
