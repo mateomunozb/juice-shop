@@ -4,30 +4,29 @@ on:
   push:
   pull_request:
     types: [opened, synchronize, reopened]
-  schedule:
-    - cron: "0 8 * * 1"
 
 jobs:
   scan:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      security-events: write
 
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: fluidattacks/sast-action@1.3.0
+      - name: Fluid Attacks SAST
+        id: scan
+        uses: fluidattacks/sast-action@1.3.0
         with:
           scan_config_path: .github/sast-config.yaml
           scanner_mode: full
-
-      - name: Upload CSV report
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v4
+        
+      - name: Upload SARIF
+        if: ${{ always() && steps.scan.outputs.sarif_file != '' }}
+        uses: github/codeql-action/upload-sarif@v4
         with:
-          name: sast-results
-          path: sast-results.csv
-          if-no-files-found: error
+          sarif_file: ${{ steps.scan.outputs.sarif_file }}
           
