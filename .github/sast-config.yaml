@@ -1,7 +1,8 @@
 language: EN
+strict: true
 output:
-  file_path: sast-results.sarif
-  format: SARIF
+  file_path: sast-results.csv
+  format: CSV
 sast:
   include:
     - .
