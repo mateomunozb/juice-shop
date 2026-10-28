@@ -1,5 +1,5 @@
 language: EN
-strictness_threshold: high
+strictness_threshold: critical
 output:
   file_path: sast-results.csv
   format: CSV
